@@ -1,0 +1,30 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    concurrent-ruby (1.0.1)
+    connection_pool (2.2.0)
+    multi_json (1.11.2)
+    redis (3.2.2)
+    rufus-scheduler (3.1.10)
+    sequel (4.33.0)
+    sidekiq (4.1.1)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      redis (~> 3.2, >= 3.2.1)
+    sidekiq-scheduler (2.0.6)
+      multi_json (~> 1)
+      redis (~> 3)
+      rufus-scheduler (~> 3.1.8)
+      sidekiq (>= 3)
+      tilt (>= 1.4.0)
+    tilt (2.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  sequel
+  sidekiq-scheduler
+
+BUNDLED WITH
+   1.10.6
