@@ -19,10 +19,14 @@ class Runway
         password: DATABASE_CONFIG['password']
       )
 
+  @@disabled = false
+
   def self.perform
-    logger.info(" ===== RUNWAY PROCESS START =====")
-    check_for_new_positions
-    logger.info(" ===== RUNWAY PROCESS END =====")
+    unless disabled?
+      logger.info(" ===== RUNWAY PROCESS START =====")
+      check_for_new_positions
+      logger.info(" ===== RUNWAY PROCESS END =====")
+    end
   end
 
   def self.check_for_new_positions
@@ -68,6 +72,23 @@ class Runway
 
   def self.logger
     @@logger ||= Logger.new('runway.log')
+  end
+
+  def self.disabled?
+    @@prev_disabled = @@disabled
+    @@disabled = File.exist?('./config/disabled.txt')
+    disabled_change?
+    @@disabled
+  end
+
+  def self.disabled_change?
+    if @@disabled != @@prev_disabled
+      if @@disabled == true
+        logger.info(" ===== RUNWAY PROCESS DISABLED =====")
+      else
+        logger.info(" ===== RUNWAY PROCESS ENABLED =====")
+      end
+    end
   end
 
 end
