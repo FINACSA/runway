@@ -43,7 +43,7 @@ class Runway
   def self.add_location(unit_id, latitude, longitude)
     insert = API_DB["INSERT INTO \"Locations\" (id, unit_id, location, created_at, updated_at)
       VALUES (uuid_in(md5(random()::text || now()::text)::cstring), ?, ST_GeomFromText('POINT(? ?)', 4326), ?, ?)",
-      unit_id, latitude, longitude, Time.now, Time.now]
+      unit_id, longitude,latitude, Time.now, Time.now]
     insert.insert
     logger.info "NEW POSITION (#{latitude}, #{longitude}) FOR UNIT (#{unit_id})"
   end
