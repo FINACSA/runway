@@ -1,0 +1,6 @@
+adapter: 'postgres'
+api_database: ''
+gps_database: ''
+host: ''
+password: ''
+user: ''

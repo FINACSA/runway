@@ -1,0 +1,3 @@
+RunwayWorker:
+  every: ["30s"]
+  class: RunwayWorker
