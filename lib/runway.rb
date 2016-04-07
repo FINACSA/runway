@@ -71,7 +71,7 @@ class Runway
   end
 
   def self.logger
-    @@logger ||= Logger.new('runway.log')
+    @@logger ||= Logger.new('./logs/runway.log')
   end
 
   def self.disabled?
